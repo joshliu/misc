@@ -113,7 +113,7 @@ def molar_mass(compound)
 		formatted.format
 	end
 
-	puts formatted.reduce(:+).round(3)
+	return formatted.reduce(:+).round(3)
 
 
 end
