@@ -78,25 +78,35 @@ def molar_mass(compound)
 	compound = compound.split("")
 
 	compound.each_with_index do |x,i|
-		if x.is_lower?
-			next
-		elsif x.is_upper?
-			if compound[i+1] != nil
-				if compound[i+1].is_lower?
-					formatted << compound[i..i+1].join
-				else
-					formatted << x
-				end
-			end
-		elsif x.to_i > 0 || x == "0"
-			if compound[i+1].to_i > 0 || compound[i+1] == "0"
-				formatted << compound[i..i+1].join.to_i
-				compound.delete_at(i+1)
+		if compound.length == 1
+			if x.is_element?
+				return x.element.mass
 			else
-				formatted << x.to_i
+				return "wat"
 			end
 		else
-			formatted << x
+			if x.is_lower?
+				next
+			elsif x.is_upper?
+				if compound[i+1] != nil
+					if compound[i+1].is_lower?
+						formatted << compound[i..i+1].join
+					else
+						formatted << compound[i]
+					end
+				else
+          formatted << compound[i]
+        end
+			elsif x.to_i > 0 || x == "0"
+				if compound[i+1].to_i > 0 || compound[i+1] == "0"
+					formatted << compound[i..i+1].join.to_i
+					compound.delete_at(i+1)
+				else
+					formatted << x.to_i
+				end
+			else
+				formatted << x
+			end
 		end
 	end
 

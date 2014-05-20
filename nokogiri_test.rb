@@ -4,10 +4,8 @@ require 'pry'
 require 'active_record'
 
 url = "http://www.chem.qmul.ac.uk/iupac/AtWt/"
-url2 = "http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)"
 
 doc = Nokogiri::HTML(open(url))
-doc2 = Nokogiri::HTML(open(url2))
 
 class Element < ActiveRecord::Base
 	establish_connection(adapter:'mysql2',
@@ -28,9 +26,5 @@ table.css("tr").each do |row|
 	e.mass = row.children[3].text.gsub("[","").gsub("]","").to_f
 	e.save
 end
-
-table2 = doc2.css("table")[0]
-table2.css("tr").each do |row|
-
 
 binding.pry
