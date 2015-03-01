@@ -1,5 +1,5 @@
 require 'pry'
-
+#cast strings to integers
 def make_int(string)
   array = string.split('').reverse
   int = 0
