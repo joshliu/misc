@@ -3,23 +3,20 @@ require 'pry'
 
 def start(array,n)
   count = 0
-  array.each_with_index do |x,i|
-    x.each_with_index do |y,j|
-      if y == 1
-        count += 1
-        flow(array,i,j,n)
-      end
+  array[0].each_with_index do |x,j|
+    if x == 0
+      flow(array,0,j,n)
     end
   end
-  return count
 end
 
 def flow(array,i,j,n)
+
   return if i < 0 || i >= n
   return if j < 0 || j >= n
-  return if array[i][j] == 0
+  return if array[i][j] == 1
 
-  array[i][j] = 0
+  array[i][j] = 1
 
   flow(array,i+1,j,n) #down
   flow(array,i-1,j,n) #up
@@ -39,7 +36,7 @@ def generate(n)
   array.each do |x|
     x.each do |y|
       print "\#" if y == 1
-      print "^" if y == 0
+      print "U" if y == 0
     end
     print "\n"
   end
