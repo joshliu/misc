@@ -90,7 +90,7 @@ class Maze
 
 		while visited.length < count
 			print_maze(cell_stack.last)
-			sleep(0.1)
+			sleep(0.05)
 			choices = get_options(cell_stack.last,visited)
 			if choices.length > 0
 				choice = choices.sample
@@ -121,7 +121,7 @@ class Maze
         vertical_walls << "|" if cell.west == 1
         vertical_walls << " " if cell.west == 0
         vertical_walls << "   " if [j,i] != coordinate
-        vertical_walls << "lol" if [j,i] == coordinate
+        vertical_walls << "wat" if [j,i] == coordinate
         bottom_walls << "---+" if cell.south == 1
         bottom_walls << "   +" if cell.south == 0
 
@@ -148,4 +148,4 @@ y_size = gets.chomp.to_i
 
 m = Maze.new(x_size, y_size)
 m.create_maze
-m.print_maze([0,0])
+m.print_maze([-1,-1])
