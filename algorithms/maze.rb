@@ -90,7 +90,7 @@ class Maze
 
 		while visited.length < count
 			print_maze(cell_stack.last)
-			sleep(0.05)
+			sleep(0.01)
 			choices = get_options(cell_stack.last,visited)
 			if choices.length > 0
 				choice = choices.sample

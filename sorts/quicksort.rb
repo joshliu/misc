@@ -14,4 +14,6 @@ def quick_sort(array)
   return quick_sort(less) + [pivot] + quick_sort(greater)   
 end
 
-binding.pry
+array = (0..10000000).to_a.sample(10000000)
+
+array.sort

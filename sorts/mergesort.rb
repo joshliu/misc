@@ -41,4 +41,6 @@ def merge(left,right)
   return result
 end
 
-binding.pry
+array = (0..1000000).to_a.sample(1000000)
+
+merge_sort(array)
