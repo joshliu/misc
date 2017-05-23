@@ -9,18 +9,8 @@ use YAML::XS 'LoadFile';
 # Masses taken from http://www.csudh.edu/oliver/chemdata/atmass.htm, superheavy 
 #       elements added manually with alternate names
 
-my @elements = @{ LoadFile('elements.yml') };
-my @compounds = @{ LoadFile('compounds.yml') };
-
-my %masses = map { $elements[$_][0] => $elements[$_][1] } 0..(scalar(@elements)-1);
-my %compound_names = map { lc($compounds[$_][0]) => $compounds[$_] } 0..(scalar(@compounds)-1);
-my %compound_formulas = map { lc($compounds[$_][1]) => $compounds[$_] } 0..(scalar(@compounds)-1);
-
-my $remainder = "Water";
-
-if (exists $compound_names{lc($remainder)}) {
-    print $compound_names{lc($remainder)};
-}
+my %masses = %{LoadFile('elements.yml')};
+# my %compounds = %{ LoadFile('compounds.yml') };
 
 # returns true if input only comprised of numbers
 sub is_int {

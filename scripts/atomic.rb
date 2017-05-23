@@ -13,6 +13,6 @@ table = doc.css("table")[0]
 
 i = 0
 table.css("tr").each do |row|
-	out_file.puts "[\"#{row.children[3].text}\", \"#{row.children[7].text.gsub("(","").gsub(")","").to_f}\"]" if i != 0
+	out_file.puts "- [\"#{row.children[1].text.downcase}\", \"#{row.children[3].text}\", \"#{row.children[7].text.gsub("(","").gsub(")","").to_f}\"]" if i != 0
   i += 1
 end

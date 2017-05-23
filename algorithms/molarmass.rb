@@ -124,7 +124,6 @@ MASSES = {
 def parse(str)
   arr = [[]]
   cur = ""
-  paren_count = 0
   str.chars.each do |c|
     if c == "("
       arr << []
@@ -149,7 +148,6 @@ end
 def calculate_mass(arr)
   arr_len = arr.length
   mass = 0
-  cur_elem = ""
   (0..arr_len).each do |i|
     if i == (arr_len - 1)
       mass += calculate_mass(arr[i]) if arr[i].class == Array
